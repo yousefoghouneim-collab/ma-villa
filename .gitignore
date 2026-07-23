@@ -13,3 +13,6 @@ node_modules/
 /Music/
 /SFX Library/
 /Code refernce/
+/the-crew-logo.png
+.vercel
+.env*

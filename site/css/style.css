@@ -43,6 +43,7 @@ body.gate-open{overflow:hidden!important;height:100vh!important}
 #gate{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .9s,visibility .9s;overflow:hidden}
 #gate.gone{opacity:0;visibility:hidden;pointer-events:none}
 #gate .in{max-width:480px;padding:20px}
+#gate .gate-logo{width:min(180px,42vw);height:auto;display:block;margin:0 auto 22px;user-select:none;-webkit-user-drag:none}
 #gate h1{font-size:clamp(32px,7vw,52px);font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
 #gate h1 em{font-style:normal;color:var(--accent)}
 #gate p{color:var(--grey);font-size:13px;margin:8px 0 16px}
