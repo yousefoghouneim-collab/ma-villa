@@ -83,12 +83,13 @@ const AudioEngine = (function(){
     currentMusicKey = null;
   }
 
-  /* SFX */
+  /* SFX — quieter than the reference: no upward doubling, and a lower
+     ceiling so no one-shot can ever hit full volume and jump out of the mix. */
   function playSfx(file, vol, rate){
     if(!soundOn) return;
     const h = getSfx(file);
     const id = h.play();
-    h.volume(Math.min((vol || 0.5) * 2.0, 1.0), id);
+    h.volume(Math.min((vol || 0.5) * 0.8, 0.5), id);
     if(rate) h.rate(rate, id);
   }
 

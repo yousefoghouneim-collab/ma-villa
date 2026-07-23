@@ -295,14 +295,17 @@ document.querySelectorAll('[data-sfxadd]').forEach(el => {
   });
 });
 
-// Cascade ticks — beat 18. Point at rebar_tie: a pen tick as milestones stack up.
-document.querySelectorAll('#cascade [data-cds]').forEach((el, i) => {
+// Cascade — beat 18. A single pen-tick as the volley lands, not one per bubble.
+let cascadeTicked = false;
+document.querySelectorAll('#cascade [data-cds]').forEach(el => {
   ScrollTrigger.create({
     trigger: el, start:'top 90%', once:true,
     onEnter: ()=>{
       if(sfxFired.has(el)) return;
       sfxFired.add(el);
-      setTimeout(()=> AudioEngine.playSfx('rebar_tie.mp3', AudioEngine.db(-6), 1 + i*0.125), i*140);
+      if(cascadeTicked) return;
+      cascadeTicked = true;
+      AudioEngine.playSfx('rebar_tie.mp3', AudioEngine.db(-6));
     }
   });
 });
