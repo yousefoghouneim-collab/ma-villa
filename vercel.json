@@ -1,1 +1,8 @@
-{ "outputDirectory": "site" }
+{
+  "outputDirectory": "site",
+  "rewrites": [
+    { "source": "/ma-villa", "destination": "/index.html" },
+    { "source": "/ma-villa/", "destination": "/index.html" },
+    { "source": "/ma-villa/:path*", "destination": "/:path*" }
+  ]
+}
