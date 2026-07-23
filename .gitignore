@@ -1,0 +1,11 @@
+# OS / tooling
+.DS_Store
+node_modules/
+
+# Raw source material — NOT part of the deliverable.
+# The assets the site needs are already normalised and copied into site/.
+Hero Video.mp4
+MA Villa Visuals/
+Music/
+SFX Library/
+Code refernce/

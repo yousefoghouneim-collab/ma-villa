@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noai,noimageai">
+<meta name="copyright" content="© 2026 Innovo. All rights reserved.">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<title>MA VILLA — An Innovo Story · Interactive Storyboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head><body id="top">
+
+<canvas id="gl"></canvas>
+<div class="vig"></div>
+<div class="grain"></div>
+<div id="bar"></div>
+<div id="chrome"><span class="logo">innovo</span><button id="snd" tabindex="0">SOUND OFF</button></div>
+
+<!-- GATE — static fullscreen, no scroll -->
+<div id="gate"><div class="in">
+  <p class="kicker">AN INNOVO STORY · INTERACTIVE STORYBOARD</p>
+  <h1>MA <em>VILLA.</em></h1>
+  <p>A villa comes down so a home can go up. Best experienced with sound.</p>
+  <div class="btns">
+    <button class="yes" id="gy">Start with sound</button>
+    <button class="no" id="gn">No sound thanks</button>
+  </div>
+</div></div>
+
+<!-- ============ HERO — scroll-scrubbed video ============ -->
+<section id="herowrap" aria-label="Introduction film">
+  <div id="heropin">
+    <video id="herovid"
+           playsinline
+           webkit-playsinline
+           muted
+           preload="auto"
+           poster="assets/video/hero-poster.jpg">
+      <source id="herosrc" src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+    <div id="herofade"></div>
+    <div id="heroscroll">SCROLL</div>
+  </div>
+</section>
+
+<!-- ====================== STAGE ====================== -->
+<main id="stage">
+
+<!-- ============ ACT I — WHAT WAS HERE BEFORE ============ -->
+
+<!-- BEAT 1: Chapter card -->
+<section class="beat chapter">
+  <div class="rings"><span style="--r:1"></span><span style="--r:2"></span><span style="--r:3"></span><span style="--r:4"></span><span style="--r:5"></span><span style="--r:6"></span></div>
+  <p class="kicker reveal">ACT ONE</p>
+  <h1 class="reveal">What Was Here Before</h1>
+  <p class="chsub reveal">MA VILLA — an Innovo story</p>
+</section>
+
+<!-- BEAT 2: Narration -->
+<section class="beat">
+  <p class="narr reveal">Before anything could be built, something had to go.</p>
+</section>
+
+<!-- BEAT 3: a01 + Mariam cut-out -->
+<section class="beat pbeat" data-bed-far>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a01.jpeg" alt="The old villa, still standing in the Dubai light" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c01.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">Still a house. Already scheduled.</p>
+</section>
+
+<!-- BEAT 4 ★: a02 + Mariam cut-out — MIRROR OPEN -->
+<section class="beat pbeat" data-bed-villa
+  data-sfxwire='{"file":"door_villa_old.mp3","db":-8,"then":{"file":"steps_villa_hard.mp3","db":-12,"delay":700}}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a02.jpeg" alt="Mariam walking the empty rooms of the old villa" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c01.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">She walked it one last time.</p>
+</section>
+
+<!-- BEAT 5: Narration -->
+<section class="beat">
+  <p class="narr small reveal">Every wall here becomes the ground under a better one.</p>
+</section>
+
+<!-- BEAT 6: The brief — bubble .me -->
+<section class="beat">
+  <div class="bubble me pop"><div class="meta"><span>THE BRIEF · FROM MARIAM</span><span>DAY 000</span></div>
+    <p>I want to feel the land from inside the house.</p>
+  </div>
+</section>
+
+<!-- BEAT 7: a03 + B8 cut-out -->
+<section class="beat pbeat" data-bed-studio>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a03.jpeg" alt="B8 Architecture studio working the first sketches" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c03.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">B8 got one sentence. They spent a year on it.</p>
+</section>
+
+<!-- BEAT 8: B8 interview — bubble .them.thesis -->
+<section class="beat">
+  <div class="bubble them thesis pop"><div class="meta"><span>B8 ARCHITECTURE</span><span>INTERVIEW 01</span></div>
+    <p>The first sketch survived. That never happens.</p>
+    <p>The hard part was the ground.</p>
+  </div>
+</section>
+
+<!-- BEAT 9 ★: a04 — first strike · ♪ demo -->
+<section class="beat pbeat" data-bed-demo
+  data-sfxwire='{"file":"demo_first_strike.mp3","db":-2}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img id="img-a04" src="assets/media/a04.jpeg" alt="The first strike of demolition against the old villa" loading="lazy">
+  </figure>
+  <p class="cap reveal">Then the first strike.</p>
+</section>
+
+<!-- BEAT 10: Triptych a05/a06/a07 — collapse -->
+<section class="beat"
+  data-sfxwire='{"file":"demo_wall_collapse.mp3","db":-4,"then":{"file":"demo_debris_settle.mp3","db":-10,"delay":1200}}'
+  data-sfxadd='{"file":"demo_dust_bloom.mp3","db":-12,"delay":400}'>
+  <div class="trip">
+    <figure class="panel pop s0"><img src="assets/media/a05.jpeg" alt="Walls coming down under the excavator" loading="lazy"></figure>
+    <figure class="panel pop s1"><img src="assets/media/a06.jpeg" alt="The villa breaking apart" loading="lazy"></figure>
+    <figure class="panel pop s2"><img src="assets/media/a07.jpeg" alt="Rubble where rooms used to be" loading="lazy"></figure>
+  </div>
+  <p class="cap reveal">Eleven years of walls, gone in an afternoon.</p>
+</section>
+
+<!-- BEAT 11 ★: NOTHING BUT LAND — pinned letter cascade -->
+<section class="pinwrap" id="zero" data-bed-plot>
+  <div class="pin">
+    <div class="zerostage">
+      <p class="zpre reveal">And by evening the plot read:</p>
+      <h2 class="zline"><span>N</span><span>O</span><span>T</span><span>H</span><span>I</span><span>N</span><span>G</span><span>&nbsp;</span><span>B</span><span>U</span><span>T</span><span>&nbsp;</span><span>L</span><span>A</span><span>N</span><span>D</span><span>.</span></h2>
+      <p class="zpost">— surveyed, cleared, silent —</p>
+    </div>
+  </div>
+</section>
+
+<!-- BEAT 12 ★: a08 — THE SILENCE BEAT -->
+<section class="beat pbeat" data-bed-plot
+  data-sfxwire='{"file":"survey_peg.mp3","db":-10}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a08.jpeg" alt="The cleared plot, empty and flat under an open sky" loading="lazy">
+  </figure>
+  <p class="cap reveal">A blank page, 1,400 square metres wide.</p>
+</section>
+
+<!-- BEAT 13: Drone flyover -->
+<section class="beat floatbeat">
+  <div class="flyer" data-fly>
+    <img id="img-drone" src="assets/media/drone.png" alt="Survey drone crossing the empty plot" loading="lazy">
+  </div>
+  <p class="kicker reveal" style="text-align:center">AERIAL SURVEY · PLOT 44</p>
+</section>
+
+<!-- BEAT 14: a09 + cut-out — excavation -->
+<section class="beat pbeat" data-bed-exc
+  data-sfxwire='{"file":"exc_bucket_dig.mp3","db":-8,"then":{"file":"exc_earth_dump.mp3","db":-10,"delay":900}}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a09.jpeg" alt="Excavators cutting the footprint of the house into the dirt" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c05.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">The machines cut the shape of the future into the dirt.</p>
+</section>
+
+<!-- ============ ACT II — OUT OF THE GROUND ============ -->
+
+<!-- BEAT 15: Act card -->
+<section class="beat actcard">
+  <p class="kicker reveal">ACT TWO</p>
+  <h2 class="reveal">Out of the Ground</h2>
+  <p class="actextra reveal">FOUNDATION · STRUCTURE</p>
+</section>
+
+<!-- BEAT 16: a10 — first steel · ♪ build -->
+<section class="beat pbeat"
+  data-sfxwire='{"file":"rebar_tie.mp3","db":-8,"then":{"file":"rebar_ring.mp3","db":-6,"delay":800}}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img id="img-a10" src="assets/media/a10.jpeg" alt="Reinforcement steel rising from the foundation" loading="lazy">
+  </figure>
+  <p class="cap reveal">First it was steel.</p>
+</section>
+
+<!-- BEAT 17: a11 — the pour -->
+<section class="beat pbeat" data-bed-pour
+  data-sfxwire='{"file":"pour_vibrator.mp3","db":-10}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a11.jpeg" alt="Concrete pouring into the raft at dawn" loading="lazy">
+  </figure>
+  <p class="cap reveal">The pour started at 4 AM and did not stop.</p>
+</section>
+
+<!-- BEAT 18: Cascade — site log volley -->
+<section class="beat cascade" id="cascade">
+  <div class="cwrap">
+    <div class="bubble me pop c0" data-cds><div class="meta"><span>SITE LOG</span><span>DAY 012</span></div><p>Raft poured. 1,180 m³.</p></div>
+    <div class="bubble them pop c1" data-cds><div class="meta"><span>QA</span><span>DAY 019</span></div><p>Cube tests passed.</p></div>
+    <div class="bubble me pop c2" data-cds><div class="meta"><span>SITE LOG</span><span>DAY 048</span></div><p>Ground floor slab.</p></div>
+    <div class="bubble them pop c3" data-cds><div class="meta"><span>QA</span><span>DAY 090</span></div><p>First floor. On programme.</p></div>
+    <div class="bubble me pop c4" data-cds><div class="meta"><span>SITE LOG</span><span>DAY 140</span></div><p>Topped out.</p></div>
+  </div>
+  <p class="cap reveal">A house gets built twice — once in drawings, once in the log.</p>
+</section>
+
+<!-- BEAT 19: a12 — crane -->
+<section class="beat pbeat"
+  data-sfxwire='{"file":"crane_beep.mp3","db":-14}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a12.jpeg" alt="Tower crane over the rising structure" loading="lazy">
+  </figure>
+  <p class="cap reveal">Same altitude, same path, every visit.</p>
+</section>
+
+<!-- BEAT 20: a13 + cut-out — raw rooms -->
+<section class="beat pbeat" data-bed-raw>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a13.jpeg" alt="Bare concrete rooms before the walls close in" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c04.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">You could walk the rooms before they were rooms.</p>
+</section>
+
+<!-- BEAT 21: Conversation beat — Head of Technical -->
+<section class="beat conversation-beat">
+  <div class="conv-wrap">
+    <div class="bubble me pop" data-typed="1" data-conv-order="1"><div class="meta"><span>Q · INTERVIEW 02</span><span>HEAD OF TECHNICAL</span></div>
+      <p>What are you proudest of?</p>
+    </div>
+    <div class="bubble them thesis pop" data-typed="1" data-conv-order="2"><div class="meta"><span>HEAD OF TECHNICAL</span><span>ON SITE</span></div>
+      <p>The things nobody will ever see.</p>
+      <p>They're inside the walls now.</p>
+    </div>
+  </div>
+  <p class="narr small reveal" data-conv-order="3">Everything that makes this house work is already invisible.</p>
+</section>
+
+<!-- ============ ACT III — THE BONES BECOME A BUILDING ============ -->
+
+<!-- BEAT 22: Act card -->
+<section class="beat actcard">
+  <p class="kicker reveal">ACT THREE</p>
+  <h2 class="reveal">The Bones Become a Building</h2>
+  <p class="actextra reveal">ENVELOPE · FIT-OUT</p>
+</section>
+
+<!-- BEAT 23: a14 — envelope · ♪ rise -->
+<section class="beat pbeat" data-bed-site>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img id="img-a14" src="assets/media/a14.jpeg" alt="Openings becoming windows across the façade" loading="lazy">
+  </figure>
+  <p class="cap reveal">Openings became windows. Gaps became rooms.</p>
+</section>
+
+<!-- BEAT 24: a15 — the invisible work -->
+<section class="beat pbeat">
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a15.jpeg" alt="Cable and conduit threaded through the walls" loading="lazy">
+  </figure>
+  <p class="cap reveal">Nine kilometres of cable, never to be seen again.</p>
+</section>
+
+<!-- BEAT 25: Triptych a16/a17/a18 — craft -->
+<section class="beat" data-bed-site
+  data-sfxwire='{"file":"formwork_strike.mp3","db":-12}'>
+  <div class="trip">
+    <figure class="panel pop s0"><img src="assets/media/a16.jpeg" alt="Stone set by hand" loading="lazy"></figure>
+    <figure class="panel pop s1"><img src="assets/media/a17.jpeg" alt="Timber worked into place" loading="lazy"></figure>
+    <figure class="panel pop s2"><img src="assets/media/a18.jpeg" alt="Plaster smoothed onto the walls" loading="lazy"></figure>
+  </div>
+  <p class="cap reveal">Stone. Timber. Plaster.</p>
+</section>
+
+<!-- BEAT 26: a19 + cut-out — the walkthrough -->
+<section class="beat pbeat" data-bed-site>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a19.jpeg" alt="Mariam in a hard hat walking the finished shell" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c02.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">She came in a hard hat and said almost nothing.</p>
+</section>
+
+<!-- BEAT 27: The first finished room — pinned, warm -->
+<section class="pinwrap warm" id="firstroom" data-bed-dawn>
+  <div class="pin">
+    <div class="dstage">
+      <p class="kicker reveal">THE FIRST FINISHED ROOM</p>
+      <figure class="panel pop big">
+        <img src="assets/media/a20.jpeg" alt="The first fully finished room, warm in the morning light" loading="lazy">
+      </figure>
+      <p class="cap reveal">One room, done. Everyone came to look at it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACT IV — THE LAST TEN PERCENT ============ -->
+
+<!-- BEAT 28: Act card -->
+<section class="beat actcard">
+  <p class="kicker reveal">ACT FOUR</p>
+  <h2 class="reveal">The Last Ten Percent</h2>
+  <p class="actextra reveal">SNAGGING · FURNISHING</p>
+</section>
+
+<!-- BEAT 29: a21 — the quiet · ♪ breath -->
+<section class="beat pbeat">
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img id="img-a21" src="assets/media/a21.jpeg" alt="The site gone quiet during snagging" loading="lazy">
+  </figure>
+  <p class="cap reveal">The site went quiet.</p>
+</section>
+
+<!-- BEAT 30: Snag list — bubble .them.spec -->
+<section class="beat">
+  <div class="bubble them spec pop"><div class="meta"><span>SNAG LIST · FINAL</span><span>DAY 611</span></div>
+    <p>Items raised: 1,247</p>
+    <p>Items closed: 1,247</p>
+    <p>Open: 0</p>
+  </div>
+</section>
+
+<!-- BEAT 31: a22 — furnishing -->
+<section class="beat pbeat">
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a22.jpeg" alt="Furniture arriving, rooms filling up" loading="lazy">
+  </figure>
+  <p class="cap reveal">The rooms filled up in an afternoon.</p>
+</section>
+
+<!-- BEAT 32 ★: a23 — the switch -->
+<section class="beat pbeat">
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a23.jpeg" alt="A hand at the light switch in the finished house" loading="lazy">
+  </figure>
+  <p class="cap reveal">At 6:40 on a Thursday, somebody found the switch.</p>
+</section>
+
+<!-- BEAT 33: Narration -->
+<section class="beat">
+  <p class="narr small reveal">618 days. One afternoon of demolition. The rest was patience.</p>
+</section>
+
+<!-- ============ ACT V — HOME ============ -->
+
+<!-- BEAT 34: Act card -->
+<section class="beat actcard">
+  <p class="kicker reveal">ACT FIVE</p>
+  <h2 class="reveal">Home</h2>
+  <p class="actextra reveal">THE SAME PLOT</p>
+</section>
+
+<!-- BEAT 35: a24 — the reveal · ♪ finale -->
+<section class="beat pbeat" data-bed-far>
+  <figure class="panel pop big" style="transform:translateZ(40px)">
+    <img id="img-a24" src="assets/media/a24.jpeg" alt="The finished mansion in the same light as the old villa" loading="lazy">
+  </figure>
+  <p class="cap reveal">Same light. Same angle. Same plot.</p>
+</section>
+
+<!-- BEAT 36 ★: a25 + Mariam cut-out — MIRROR CLOSE -->
+<section class="beat pbeat" data-bed-home
+  data-sfxwire='{"file":"door_home_new.mp3","db":-10,"then":{"file":"steps_home_soft.mp3","db":-14,"delay":700}}'>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a25.jpeg" alt="Mariam walking the finished home, same blocking as the old villa" loading="lazy">
+    <div class="cutout" data-drift>
+      <img src="assets/media/c01.png" alt="" loading="lazy">
+    </div>
+  </figure>
+  <p class="cap reveal">Same steps. Same doorways. Nothing else the same.</p>
+</section>
+
+<!-- BEAT 37: Mariam interview — bubble .them.thesis -->
+<section class="beat">
+  <div class="bubble them thesis pop"><div class="meta"><span>MARIAM AZMY · CO-FOUNDER, INNOVO</span><span>INTERVIEW 03</span></div>
+    <p>I was the client and the company on the same project.</p>
+    <p>The company was harder to please.</p>
+  </div>
+</section>
+
+<!-- BEAT 38: Whisper — c06 centred -->
+<section class="beat whisper">
+  <div class="wpair">
+    <div class="cutout pop" data-drift>
+      <img src="assets/media/c06.png" alt="Mariam and the architect on the last day" loading="lazy">
+    </div>
+  </div>
+  <p class="wline reveal">On the last day the architect asked when it started feeling like home.</p>
+  <p class="wquote reveal">&ldquo;The day you tore down the other one.&rdquo;</p>
+</section>
+
+<!-- BEAT 39: a26 — living in it -->
+<section class="beat pbeat" data-bed-home>
+  <figure class="panel pop" style="transform:translateZ(40px)">
+    <img src="assets/media/a26.jpeg" alt="The house lived in, warm and finished" loading="lazy">
+  </figure>
+  <p class="cap reveal">She stopped walking through it and started living in it.</p>
+</section>
+
+<!-- BEAT 40: End card -->
+<section class="beat endcard">
+  <div class="rings"><span style="--r:1"></span><span style="--r:2"></span><span style="--r:3"></span><span style="--r:4"></span><span style="--r:5"></span><span style="--r:6"></span></div>
+  <h2 class="reveal">innovo</h2>
+  <p class="kicker reveal">WE BUILD WHERE SOMETHING ELSE STOOD.</p>
+  <p class="chsub reveal">Plot 44 · 618 days · 1 house</p>
+  <a class="browse reveal" href="#top">Read it again…</a>
+  <p class="copyright reveal">© 2026 Innovo. All artwork, music and text are protected works.</p>
+</section>
+
+</main>
+
+<!-- Libraries (vendored locally) -->
+<script src="js/vendor/three.min.js"></script>
+<script src="js/vendor/howler.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+
+<!-- App -->
+<script src="js/dust.js?v=1"></script>
+<script src="js/audio.js?v=1"></script>
+<script src="js/hero.js?v=1"></script>
+<script src="js/main.js?v=1"></script>
+</body></html>

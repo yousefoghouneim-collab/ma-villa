@@ -1,0 +1,225 @@
+:root{
+  /* --- surfaces --- */
+  --paper:      #FFFFFF;   /* page background                          */
+  --card:       #FDFCFA;   /* panels + bubbles — a hair warm off-white */
+  --wash:       #F7F4F0;   /* "me" bubbles, subtle fills               */
+  --line:       #E6E0D8;   /* hairlines, borders                       */
+
+  /* --- text --- */
+  --ink:        #15100C;   /* headings + body — WARM charcoal          */
+  --grey:       #5A514A;   /* captions, secondary                      */
+  --steel:      #8A7F76;   /* meta, timestamps, labels                 */
+
+  /* --- accent --- */
+  --accent:     #A8611C;   /* deep amber — links, kickers, rules       */
+  --accent-lift:#C07A22;   /* large display type only                  */
+  --accent-soft:rgba(168,97,28,.10);
+
+  /* --- warmth --- */
+  --glow:       rgba(214,164,90,.14);   /* warm radial for .warm pins   */
+}
+*{box-sizing:border-box;margin:0}
+html{overflow-x:hidden}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font-family:Poppins,sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* LOCK scroll when gate is open */
+body.gate-open{overflow:hidden!important;height:100vh!important}
+
+#gl{position:fixed;inset:0;z-index:0;pointer-events:none}
+.grain{position:fixed;inset:-50%;z-index:3;pointer-events:none;opacity:.035;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");animation:gr 0.6s steps(2) infinite}
+@keyframes gr{0%{transform:translate(0,0)}50%{transform:translate(-4%,3%)}100%{transform:translate(3%,-4%)}}
+.vig{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(255,255,255,.85) 100%)}
+
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60;box-shadow:0 0 12px rgba(168,97,28,.4)}
+#chrome{position:fixed;top:0;left:0;right:0;z-index:55;display:flex;justify-content:space-between;align-items:center;padding:16px 22px}
+#chrome .logo{font-weight:600;letter-spacing:.14em;font-size:14px;color:var(--ink)}
+#snd{background:rgba(255,255,255,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--line);color:var(--grey);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;padding:8px 14px;cursor:pointer;border-radius:20px;transition:.3s}
+#snd:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+#snd.on{color:var(--accent);border-color:var(--accent)}
+
+/* GATE — fixed fullscreen, body scroll locked */
+#gate{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .9s,visibility .9s;overflow:hidden}
+#gate.gone{opacity:0;visibility:hidden;pointer-events:none}
+#gate .in{max-width:480px;padding:20px}
+#gate h1{font-size:clamp(32px,7vw,52px);font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+#gate h1 em{font-style:normal;color:var(--accent)}
+#gate p{color:var(--grey);font-size:13px;margin:8px 0 16px}
+#gate .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+#gate button{font-family:Poppins,sans-serif;font-size:14px;padding:12px 24px;border-radius:30px;cursor:pointer;border:1px solid var(--accent);transition:.3s}
+#gate .yes{background:var(--accent);color:#fff;font-weight:600}
+#gate .no{background:none;color:var(--accent)}
+#gate button:hover{transform:translateY(-2px)}
+#gate button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ============ HERO — scroll-scrubbed video ============ */
+#herowrap{
+  position:relative;
+  z-index:6;
+  /* height is set by JS from the video duration */
+}
+#heropin{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  height:100svh;              /* mobile: ignores the collapsing URL bar */
+  overflow:hidden;
+  background:var(--paper);
+}
+#herovid{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  width:auto; height:auto;
+  object-fit:cover;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+#herofade{
+  position:absolute; inset:0;
+  background:var(--paper);
+  opacity:0;
+  pointer-events:none;
+  will-change:opacity;
+}
+#heroscroll{
+  position:absolute;
+  bottom:26px; left:50%;
+  transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px; letter-spacing:.3em;
+  color:#fff;
+  mix-blend-mode:difference;
+  animation:bob 2s ease-in-out infinite;
+  transition:opacity .4s;
+  pointer-events:none;
+}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* stage */
+body{perspective:1600px}
+#stage{position:relative;z-index:5;transform-style:preserve-3d;will-change:transform}
+
+/* BEATS — tight spacing, no blank gaps */
+.beat{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3vh 24px;position:relative}
+.beat.chapter,.beat.actcard,.beat.endcard{min-height:50vh;padding:6vh 24px}
+.beat.pbeat{padding:4vh 24px}
+.narr{font-size:clamp(20px,3vw,30px);max-width:640px;text-align:center;font-weight:300}
+.narr.small{font-size:clamp(16px,2vw,21px);color:var(--grey)}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.3em;color:var(--accent)}
+.cap{font-family:Caveat,cursive;font-size:clamp(20px,2.6vw,28px);color:var(--grey);max-width:560px;text-align:center;margin-top:12px}
+
+.chapter h1,.actcard h2{font-size:clamp(44px,8vw,92px);font-weight:700;letter-spacing:-.02em;margin:10px 0}
+.chsub{color:var(--grey);font-size:15px}
+.actextra{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--steel);margin-top:14px}
+.rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.rings span{position:absolute;width:calc(var(--r)*120px);height:calc(var(--r)*120px);border:1px solid var(--accent);border-radius:50%;opacity:calc(.22 - var(--r)*.03)}
+
+/* panels */
+.panel{position:relative;width:min(680px,88vw);border:1px solid var(--line);background:var(--card);box-shadow:0 24px 60px rgba(21,16,12,.10), 0 2px 6px rgba(21,16,12,.04);border-radius:6px;overflow:visible;margin:0}
+.panel img{display:block;width:100%;height:auto;border-radius:6px}
+.panel.big{width:min(780px,92vw)}
+
+.pop{opacity:0;transform:scale(.82) rotate(var(--rot,-1.6deg)) translateY(46px) translateZ(40px)}
+.reveal{opacity:0;transform:translateY(30px)}
+
+/* cutouts — on right corner of image */
+.cutout{position:absolute;width:110px;z-index:6;filter:drop-shadow(0 12px 18px rgba(21,16,12,.22));right:-20px;bottom:-20px}
+.cutout img{width:100%;height:auto;display:block}
+@media(max-width:760px){.cutout{width:80px;right:-8px;bottom:-8px}}
+
+/* bubbles — scratch-in animation */
+.bubble{max-width:min(520px,88vw);padding:18px 22px;border-radius:18px;font-size:15px;background:var(--card);border:1px solid var(--line);--rot:1.4deg;clip-path:inset(0 100% 0 0);transition:clip-path 0.6s cubic-bezier(.22,1,.36,1)}
+.bubble.scratched{clip-path:inset(0 0 0 0)}
+.bubble.me{border-bottom-right-radius:4px;align-self:center;background:var(--wash);border-color:var(--line)}
+.bubble.them{border-bottom-left-radius:4px;background:var(--card)}
+.bubble .meta{display:flex;justify-content:space-between;gap:20px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--steel);margin-bottom:8px}
+.bubble p{margin:4px 0}
+.bubble.thesis{border-color:var(--accent);box-shadow:0 0 40px rgba(168,97,28,.10)}
+.bubble.thesis p:last-child{color:var(--accent);font-weight:600;font-size:18px}
+.bubble.spec{border-color:var(--steel)}
+.bubble.spec p{font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:16px}
+
+/* pinned scenes */
+.pinwrap{height:120vh;position:relative;margin-bottom:0}
+#zero{height:110vh}
+.pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.zerostage{text-align:center;padding:0 20px}
+.zpre{color:var(--grey);font-size:18px;margin-bottom:30px}
+.zline{font-family:'IBM Plex Mono',monospace;font-size:clamp(30px,7vw,76px);font-weight:700;color:var(--accent);letter-spacing:.04em}
+.zline span{opacity:0;display:inline-block;transform:translateY(24px);transition:opacity .3s,transform .5s cubic-bezier(.2,1.4,.3,1)}
+.zline span.in{opacity:1;transform:none}
+.zpost{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--steel);margin-top:30px;opacity:0;transition:opacity 1s 1s}
+.zpost.in{opacity:1}
+#zero .pin{background:radial-gradient(circle at center,var(--accent-soft),transparent 65%)}
+.warm .pin{background:radial-gradient(circle at 50% 80%,var(--glow),transparent 60%)}
+.dstage{text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 18px}
+
+.trip{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:1100px}
+.trip .panel{width:min(320px,86vw)}
+.trip .s0{--rot:-2.4deg}.trip .s1{--rot:1.8deg}.trip .s2{--rot:-1.2deg}
+
+.cascade .cwrap{display:flex;flex-direction:column;gap:10px;width:min(560px,90vw)}
+.cascade .bubble.me{align-self:flex-end}
+.cascade .bubble.them{align-self:flex-start}
+
+/* flyer — full width travel */
+.floatbeat{min-height:50vh;padding:6vh 0;position:relative;overflow:hidden}
+.flyer{width:min(260px,50vw);position:absolute;top:50%;z-index:10;will-change:transform;pointer-events:none}
+.flyer img{width:100%;height:auto;display:block}
+
+.whisper{background:radial-gradient(circle at center,var(--accent-soft),transparent 60%)}
+.wpair{display:flex;flex-direction:column;align-items:center}
+.wpair .cutout{position:static;width:180px;margin-bottom:20px;right:auto;bottom:auto}
+.wline{color:var(--grey);font-size:17px}
+.wquote{font-family:Caveat,cursive;font-size:clamp(28px,4vw,44px);color:var(--accent);max-width:640px;text-align:center}
+
+.endcard h2{font-size:clamp(60px,10vw,120px);font-weight:600;letter-spacing:.04em}
+.browse{display:inline-block;margin-top:34px;color:var(--accent);border:1px solid var(--accent);border-radius:30px;padding:12px 26px;text-decoration:none;font-size:14px;transition:.3s}
+.browse:hover{background:var(--accent);color:#fff}
+.browse:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.copyright{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--steel);margin-top:40px;opacity:.7}
+
+/* conversation layout */
+.conv-wrap{display:flex;flex-direction:column;gap:14px;width:min(560px,90vw)}
+.conv-wrap .bubble.me{align-self:flex-end}
+.conv-wrap .bubble.them{align-self:flex-start}
+.conversation-beat{display:flex;flex-direction:column;align-items:center;gap:14px}
+
+/* fading transitions on all animated elements */
+.pop{transition:opacity 0.6s ease, transform 0.9s cubic-bezier(.22,1,.36,1)}
+.reveal{transition:opacity 0.8s ease, transform 0.8s ease}
+
+.panel img[loading="lazy"]{background:var(--card)}
+
+@media (prefers-reduced-motion: reduce){
+  #stage{transform:none!important}
+  .pop,.reveal,.zline span{transition:none!important;opacity:1!important;transform:none!important}
+  .bubble{clip-path:none!important;transition:none!important}
+  .grain{animation:none}
+  #herowrap{height:100vh!important}
+  #heropin{position:relative}
+  #heroscroll{animation:none}
+}
+
+/* asset protection */
+.panel img,.flyer img,.cutout img{user-select:none;-webkit-user-select:none;-webkit-user-drag:none;-webkit-touch-callout:none;pointer-events:none}
+
+/* devtools deterrent blur (off by default) */
+.inspect-blur main{filter:blur(14px);transition:filter .2s}
+
+@media (max-width:600px){
+  .beat{padding:2vh 16px}
+  .beat.chapter,.beat.actcard,.beat.endcard{padding:4vh 16px;min-height:40vh}
+  .panel{width:min(680px,94vw)}
+  .trip .panel{width:min(320px,92vw)}
+  .cutout{width:70px;right:-5px;bottom:-5px}
+  #stage{transform-style:flat;will-change:auto;transform:none!important}
+  body{perspective:none}
+  .floatbeat{min-height:40vh;overflow:visible}
+  .flyer{width:min(220px,45vw)}
+}
