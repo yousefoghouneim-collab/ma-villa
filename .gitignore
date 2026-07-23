@@ -4,8 +4,12 @@ node_modules/
 
 # Raw source material — NOT part of the deliverable.
 # The assets the site needs are already normalised and copied into site/.
-Hero Video.mp4
-MA Villa Visuals/
-Music/
-SFX Library/
-Code refernce/
+# Anchored to the repo root (leading /) so these never collide with
+# same-named paths inside site/ (e.g. site/audio/music/) — git matching is
+# case-insensitive by default on macOS, so an unanchored "Music/" here
+# previously also matched and silently excluded site/audio/music/.
+/Hero Video.mp4
+/MA Villa Visuals/
+/Music/
+/SFX Library/
+/Code refernce/

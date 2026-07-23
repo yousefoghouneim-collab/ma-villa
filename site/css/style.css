@@ -100,9 +100,14 @@ body.gate-open{overflow:hidden!important;height:100vh!important}
 }
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
 
-/* stage */
-body{perspective:1600px}
-#stage{position:relative;z-index:5;transform-style:preserve-3d;will-change:transform}
+/* stage
+   perspective lives on #stage itself, NOT body. `perspective` on an ancestor
+   creates a new containing block for every position:fixed descendant — with
+   it on body, GSAP's fixed-position hero pin (#heropin) was being anchored
+   to body instead of the viewport, so it scrolled away with the page instead
+   of staying put. #stage's children still get their 3D depth either way,
+   since perspective governs how an element's OWN children are rendered. */
+#stage{position:relative;z-index:5;perspective:1600px;transform-style:preserve-3d;will-change:transform}
 
 /* BEATS — tight spacing, no blank gaps */
 .beat{min-height:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3vh 24px;position:relative}
@@ -218,8 +223,7 @@ body{perspective:1600px}
   .panel{width:min(680px,94vw)}
   .trip .panel{width:min(320px,92vw)}
   .cutout{width:70px;right:-5px;bottom:-5px}
-  #stage{transform-style:flat;will-change:auto;transform:none!important}
-  body{perspective:none}
+  #stage{transform-style:flat;will-change:auto;transform:none!important;perspective:none}
   .floatbeat{min-height:40vh;overflow:visible}
   .flyer{width:min(220px,45vw)}
 }
